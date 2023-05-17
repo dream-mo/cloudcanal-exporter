@@ -1,0 +1,13 @@
+groups:
+  - name: 'cloudcanal_monitor'
+    rules:
+      - alert: CloudcanalLicenseExpire
+        expr: 'lm_cloudcanal_license_expiry-time() < 86400 * 10'
+        for: 10m
+        labels:
+          severity: critical
+          threshold: 10
+          for_time: "10m"
+        annotations:
+          summary: "Cloudcanal license expire(instance {{ $labels.instance }})"
+          description: "请注意, Cloudcanal 许可证将要过期, 还有({{ $value }})s < 10天"
