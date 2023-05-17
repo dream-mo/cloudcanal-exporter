@@ -4,6 +4,20 @@
 
 如有帮助给个Star⭐鼓励一下~️
 
+## 构建
+
+```shell
+CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o cloudcanal_exporter
+```
+
+## 运行
+
+```shell
+cloudcanal_exporter --help # help
+cloudcanal_exporter -listen-address :9119 -url http://localhost:8111 -username test@clougence.com -password clougence2021
+curl http://localhost:9119/metrics # test curl
+```
+
 ## 样例
 
 ![grafana](grafana-demo.png)
